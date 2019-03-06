@@ -1,7 +1,10 @@
-#!/bin/env python
-
+# coding: utf-8
 import sys
 import re
+# import importlib
+#
+# importlib.reload(sys)
+
 
 def extract_text(line):
     pattern = re.compile(r'<seg id=.*>(.*)</seg>')
@@ -12,14 +15,16 @@ def extract_text(line):
 
 
 if __name__ == '__main__':
+    # print(sys.stdout.encoding)
     if len(sys.argv) != 2:
         sys.stderr.write('usage: %s + input.sgm' % __file__)
         sys.exit(-1)
     filename = sys.argv[1]
-    with open(filename, 'r') as f:
-        for line in f:
+    with open(filename, 'r', encoding="utf-8") as f:
+        for line in f.readlines():
+            print(line)
             new_line = extract_text(line)
             if new_line:
-                sys.stdout.write(new_line.strip()) 
-                sys.stdout.write('\n')
+                print(new_line.strip())
+                print('\n')
 

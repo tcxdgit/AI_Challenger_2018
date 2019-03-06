@@ -1,11 +1,13 @@
 #!/bin/env python
+# coding: utf-8
 
 import sys
 import jieba
 
+
 def jieba_cws(string):
-    seg_list = jieba.cut(string.strip().decode('utf8'))
-    return u' '.join(seg_list).encode('utf8')
+    seg_list = jieba.cut(string.strip())   # .decode('utf8')
+    return u' '.join(seg_list)    # .encode('utf8')
 
 
 if __name__ == '__main__':
