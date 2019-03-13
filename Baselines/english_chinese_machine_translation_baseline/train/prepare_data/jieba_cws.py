@@ -17,7 +17,7 @@ if __name__ == '__main__':
     filename = sys.argv[1]
     #fileout = open("%s.cws"%filename, 'wb')
     with open(filename, 'r') as f:
-        for line in f:
+        for line in f.readlines():
             line_cws = jieba_cws(line)
             sys.stdout.write(line_cws.strip())
             sys.stdout.write('\n')
